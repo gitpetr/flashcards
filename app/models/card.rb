@@ -4,7 +4,7 @@ class Card < ApplicationRecord
 
   validate :on_review, on: :create
 
-  before_validation  :no_equal
+  validate  :no_equal, on: [:create, :update]
 
   protected
 
