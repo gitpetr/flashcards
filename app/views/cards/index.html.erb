@@ -1,0 +1,7 @@
+<h1>Все карточки: <%= @cards.all.count %> шт.</h1>
+<% @cards.each do |card| %>
+<p>
+  <%= card.original %> | <%= card.review.to_date.strftime("%d %B, %Y") %>
+
+</p>
+<% end %>
