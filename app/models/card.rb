@@ -2,13 +2,15 @@ class Card < ApplicationRecord
   validates :original, :translated, :review, presence: true 
   validates :original, :translated, uniqueness: { case_sensitive: false }
 
-  before_create do
-    self.review = self.created_at +  86400 * 3
-  end
+  validate :on_review, on: :create
 
   before_validation  :no_equal
 
   protected
+
+  def on_review 
+    self.review = 3.days.from_now
+  end
 
   def no_equal
     if self.original.downcase == self.translated.downcase
