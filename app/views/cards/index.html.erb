@@ -1,7 +1,10 @@
 <h1>Все карточки: <%= @cards.all.count %> шт.</h1>
 <% @cards.each do |card| %>
 <p>
-  <%= card.original %> | <%= card.review.to_date.strftime("%d %B, %Y") %>
+  <%= link_to card.original, card %> | 
+  <%= card.review.to_date.strftime("%d %B, %Y") %> | 
+  <%= link_to 'Изменить', edit_card_path(card) %> |  
+   <%= link_to 'Удалить', card, method: :delete, data: { confirm: 'Удалить насовсем?' } %>
 
 </p>
 <% end %>
