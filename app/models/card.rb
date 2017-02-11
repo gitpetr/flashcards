@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  validates :original, :translated, :review, presence: true 
+  validates :original, :translated, presence: true 
   validates :original, :translated, uniqueness: { case_sensitive: false }
 
   validate :on_review, on: :create

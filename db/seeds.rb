@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Card.create(original: 'auch', translated: 'also, too, as well')
+Card.create(original: 'schon', translated: 'already, just, yet, indeed, surely; handle with care, spare (imperative singular, and colloquial 1st-person singular present of "schonen")')
+Card.create(original: '   als', translated: 'than, when, as, while, as if')
+Card.create(original: '   dann', translated: '  then, after that')
