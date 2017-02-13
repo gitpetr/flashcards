@@ -24,7 +24,11 @@
     </header>
 
     <section>
-
+         <% flash.each do |name, message| %>
+            <div class="alert alert-<%= name %>">
+              <%= message %>
+            </div>
+          <% end %>
 
     <%= yield %>
 

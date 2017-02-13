@@ -6,6 +6,8 @@ class Card < ApplicationRecord
 
   validate  :no_equal, on: [:create, :update]
 
+  scope :atrandom, -> { where('review <= current_date').order('RANDOM()').first }
+
   protected
 
   def on_review 

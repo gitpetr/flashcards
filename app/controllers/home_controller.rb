@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @take_card = Card.where('review <= current_date').take
+    @take_card = Card.atrandom
   end
 
   
@@ -10,18 +10,12 @@ class HomeController < ApplicationController
     @take_card = params[:text]
      if @cards.original == @take_card 
         @cards.update_attributes(review: 3.days.from_now)
+        redirect_to :back, success: 'угадал'
+      else
+        flash.now[:danger] = 'Извините, не правильно'
+        redirect_to :back, danger: 'Извините, не правильно'
      end
-        redirect_to :back
+        
   end
-
-  
-
-  private
-
  
-
-  def card_params 
-    params.require(:card).permit(:original, :translated)
-  end
-
 end
