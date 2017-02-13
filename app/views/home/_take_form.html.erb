@@ -1,4 +1,5 @@
-<%= form_for(@take_card, url: home_path(@take_card),  method: "patch") do |f| %>
+ 
+<%= form_for(@take_card, url: check_translation_path(@take_card),  method: "patch") do |f| %>
         <%= text_field_tag(:text) %>
          
         <%= f.submit %>

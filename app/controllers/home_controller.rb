@@ -1,21 +1,22 @@
 class HomeController < ApplicationController
 
   def index
-    @take_card = Card.atrandom
+    @take_card = Card.for_review
   end
 
   
   def update 
-    @cards = Card.find(params[:id])
+    @card = Card.find(params[:id])
     @take_card = params[:text]
-     if @cards.original == @take_card 
-        @cards.update_attributes(review: 3.days.from_now)
-        redirect_to :back, success: 'угадал'
-      else
-        flash.now[:danger] = 'Извините, не правильно'
-        redirect_to :back, danger: 'Извините, не правильно'
-     end
-        
+    if @card.comparison(@take_card)
+      flash.now[:success] = 'угадал'
+      redirect_to :back, success: 'угадал'
+
+    else
+       flash.now[:danger] = 'извините, не правильно'
+       redirect_to :back, danger: 'извините, не правильно'
+    end
+     
   end
  
 end
