@@ -1,14 +1,13 @@
 class HomeController < ApplicationController
 
   def index
-    @take_card = Card.for_review
+    # @take_card = Card.for_review
+    @take_card = Card.for_review.review.present? ? Card.for_review : Card.for_all
   end
-
   
   def update 
     @card = Card.find(params[:id])
-    @take_card = params[:text]
-    if @card.comparison(@take_card)
+    if @card.comparison(params[:text])
       flash.now[:success] = 'угадал'
       redirect_to :back, success: 'угадал'
 
@@ -18,5 +17,6 @@ class HomeController < ApplicationController
     end
      
   end
- 
+
 end
+ 

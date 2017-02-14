@@ -6,7 +6,8 @@ class Card < ApplicationRecord
 
   validate  :no_equal, on: [:create, :update]
 
-  scope :for_review, -> { where(' review <= current_date or review > current_date ').order('RANDOM()').first }
+  scope :for_review, -> { where(' review <= current_date ').order('RANDOM()').first }
+  scope :for_all, -> {all.order('RANDOM()').first}
 
   def comparison(txt)
     if self.original == txt
@@ -18,7 +19,7 @@ class Card < ApplicationRecord
   protected
 
   def on_review 
-    self.review = 3.days.from_now
+    self.review = -4.days.from_now
   end
 
   def no_equal
