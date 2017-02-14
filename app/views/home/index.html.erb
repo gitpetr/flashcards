@@ -1,0 +1,34 @@
+
+
+ <div class="jumbotron font-center">
+ 
+      <p style="font-size: 22px;">
+        Первый в мире удобный менеджер флеш-карточек. Именно так.
+      </p>
+  
+
+     
+ </div>
+
+  
+
+
+<div class="panel panel-default">
+  <% if @take_card.translated.present? %>
+
+    <div class="panel-heading"><%= @take_card.translated %></div>
+
+    <div class="panel-body">
+      <p>
+        <%= render 'home/take_form' %>
+      </p>
+    </div>
+
+  <% else %>
+    <div class="panel-body">
+      <h1>Карточек нет</h1>
+    </div>
+
+  <% end %>
+
+</div>

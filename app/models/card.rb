@@ -6,6 +6,16 @@ class Card < ApplicationRecord
 
   validate  :no_equal, on: [:create, :update]
 
+  scope :for_review, -> { where(' review <= current_date ').order('RANDOM()').first }
+  scope :for_all, -> {all.order('RANDOM()').first}
+
+  def comparison(txt)
+    if self.original == txt
+        self.update_attributes(review: 3.days.from_now)
+     end
+        
+  end
+
   protected
 
   def on_review 
