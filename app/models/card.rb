@@ -1,19 +1,17 @@
 class Card < ApplicationRecord
   validates :original, :translated, presence: true 
   validates :original, :translated, uniqueness: { case_sensitive: false }
-
   validate :on_review, on: :create
-
   validate  :no_equal, on: [:create, :update]
-
   scope :for_review, -> { where(' review <= current_date ').order('RANDOM()').first }
   scope :for_all, -> {all.order('RANDOM()').first}
 
   def comparison(txt)
-    if self.original == txt
-        self.update_attributes(review: 3.days.from_now)
-     end
-        
+    self.original == txt
+  end
+
+  def i_am_guessing
+      @card.update_attributes(review: 3.days.from_now) 
   end
 
   protected
@@ -27,4 +25,5 @@ class Card < ApplicationRecord
       self.errors.add( :original, 'Оригинальный и переведённый тексты не должны быть равны друг другу')
     end
   end
+  
 end
