@@ -20,14 +20,20 @@ RSpec.describe Card, type: :model do
     expect(Card.new(original: "hause", translated: "Hause")).not_to be_valid
   end
 
-  it 'original not to be eq translated in ru?' do
-    expect(Card.new(original: "Дом", translated: "дом")).to be_valid
-  end
-
   it 'catching errors if original eq translated' do
     card = Card.new(original: "hause", translated: "Hause")
     card.valid?
     expect(card.errors[:original]).to include('Оригинальный и переведённый тексты не должны быть равны друг другу')
+  end
+
+  describe do 
+
+    let(:card){create(:card, original: "дом", translated: "Haus")}
+
+    it 'method of verification comparison of original = true for russian ' do
+      expect(card.comparison("дом")).to be true
+    end
+
   end
 end
  
