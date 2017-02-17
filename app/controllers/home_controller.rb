@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def update 
     @card = Card.find(params[:id])
     if @card.comparison(params[:text])
-      i_am_guessing
+      @card.update_date_review
       flash.now[:success] = 'угадал'
       redirect_to :back, success: 'угадал'
 

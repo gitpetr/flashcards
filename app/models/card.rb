@@ -10,8 +10,8 @@ class Card < ApplicationRecord
     self.original == txt
   end
 
-  def i_am_guessing
-      @card.update_attributes(review: 3.days.from_now) 
+  def update_date_review
+      self.update_attributes(review: 3.days.from_now) 
   end
 
   protected
@@ -25,5 +25,5 @@ class Card < ApplicationRecord
       self.errors.add( :original, 'Оригинальный и переведённый тексты не должны быть равны друг другу')
     end
   end
-  
+
 end

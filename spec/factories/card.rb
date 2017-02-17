@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :card do
-    original "Home"
-    translated "Haus"
+    original "haus"
+    translated "home"
   end
 end
