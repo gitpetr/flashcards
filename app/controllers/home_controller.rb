@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @card = Card
-    @card = @card.for_review.count > 0 ? @card = @card.for_review : @card  = @card.for_all
-    @card = @card.one_card 
+    @card = Card.for_review.take
   end
   
   def update 

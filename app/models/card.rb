@@ -5,8 +5,6 @@ class Card < ApplicationRecord
   validate  :no_equal, on: [:create, :update]
   
   scope :for_review, -> { where( 'review <= ?', Time.now ) }
-  scope :for_all,    -> { where( 'review > ?', Time.now ) }
-  scope :one_card,   -> { order('RANDOM()').first }
   
   def comparison(txt)
     self.original == txt
