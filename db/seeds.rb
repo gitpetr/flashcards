@@ -8,7 +8,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-html_doc = Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words"))
+html_doc = Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2"))
 
 
 

@@ -7,15 +7,16 @@
  </div>
 
 <div class="panel panel-default">
-  <% if @take_card.translated.present? %>
+   <% if @card != [] %>
+         
+            <div class="panel-heading"><%= @card.translated %></div>
 
-    <div class="panel-heading"><%= @take_card.translated %></div>
-
-    <div class="panel-body">
-      <p>
-        <%= render 'home/take_form' %>
-      </p>
-    </div>
+            <div class="panel-body">
+              <p>
+                <%= render 'home/form' %>
+              </p>
+              </div>
+   
 
   <% else %>
     <div class="panel-body">
