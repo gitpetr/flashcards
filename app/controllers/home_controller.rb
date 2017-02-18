@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @take_card = Card.for_review.review.present? ? Card.for_review : Card.for_all
+    @card = Card.for_review.take
   end
   
   def update 
@@ -9,11 +9,11 @@ class HomeController < ApplicationController
     if @card.comparison(params[:text])
       @card.update_date_review
       flash.now[:success] = 'угадал'
-      redirect_to :back, success: 'угадал'
+      redirect_back(fallback_location: root_path,  success: 'угадал')
 
     else
-       flash.now[:danger] = 'извините, не правильно'
-       redirect_to :back, danger: 'извините, не правильно'
+       flash.now[:danger] = 'извините, неправильно'
+       redirect_back(fallback_location: root_path, danger: 'извините, неправильно')
     end
      
   end
