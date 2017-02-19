@@ -1,6 +1,7 @@
 sudo: false
 install: git clone --depth 1 git@github.com:gitpetr/flashcards.git
 script: PATH="./bats/bin:$PATH" test/run
-language: ruby
+language: c
 env:
   - RBENV_NATIVE_EXT=
+  - RBENV_NATIVE_EXT=1
