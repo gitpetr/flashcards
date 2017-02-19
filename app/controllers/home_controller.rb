@@ -12,8 +12,8 @@ class HomeController < ApplicationController
       redirect_back(fallback_location: root_path,  success: 'угадал')
 
     else
-       flash.now[:danger] = 'извините, не правильно'
-       redirect_to :back, danger: 'извините, не правильно'
+       flash.now[:danger] = 'извините, неправильно'
+       redirect_back(fallback_location: root_path, danger: 'извините, неправильно')
     end
      
   end
