@@ -1,5 +1,5 @@
-https://travis-ci.org/gitpetr/flashcards.svg?branch=master
 [![Build Status](https://travis-ci.org/gitpetr/flashcards.svg?branch=master)](https://travis-ci.org/gitpetr/flashcards)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
