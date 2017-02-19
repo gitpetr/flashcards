@@ -4,4 +4,3 @@ script: PATH="./bats/bin:$PATH" test/run
 language: ruby
 env:
   - RBENV_NATIVE_EXT=
-  - RBENV_NATIVE_EXT=1
