@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     if @card.comparison(params[:text])
       @card.update_date_review
       flash.now[:success] = 'угадал'
-      redirect_to :back, success: 'угадал'
+      redirect_back(fallback_location: root_path,  success: 'угадал')
 
     else
        flash.now[:danger] = 'извините, не правильно'
