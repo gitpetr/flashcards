@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Cards", type: :feature do
   before(:each) do 
-    #Card.destroy_all
+    create(:user) 
     create(:card, original: "дом", translated: "Haus").update_attributes(review: Time.now)
     visit root_path
    end
