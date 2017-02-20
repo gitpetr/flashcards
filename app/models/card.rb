@@ -1,8 +1,10 @@
 class Card < ApplicationRecord
-  validates :original, :translated, presence: true 
+  validates :original, :translated, :user_id, presence: true 
   validates :original, :translated, uniqueness: { case_sensitive: false }
-  validate :on_review, on: :create
+  validate  :on_review, on: :create
   validate  :no_equal, on: [:create, :update]
+
+  belongs_to :user
   
   scope :for_review, -> { where( 'review <= ?', Time.now ) }
   
