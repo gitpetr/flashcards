@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Cards", type: :feature do
   before(:each) do 
     user = create(:user, email: "test@gmail.com", password: 'password')
-    create(:card, original: "дом", translated: "Haus", user_id: user.id).update_attributes(review: Time.now)
+    create(:card, original: "дом", translated: "Haus").update_attributes(review: Time.now)
     visit root_path
    end
 
