@@ -1,0 +1,9 @@
+ 
+<%= form_for(@card, url: check_translation_path(@card),  method: "patch") do |f| %>
+       
+       <div id="originaltext"> <%= text_field_tag(:text) %></div>
+       
+        <%= f.submit %>
+<% end %>
+
+       

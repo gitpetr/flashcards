@@ -28,10 +28,10 @@ RSpec.describe Card, type: :model do
 
   describe do 
 
-    let(:card){create(:card, original: "дом", translated: "Haus")}
+    let(:card){create(:card, original: "Стол", translated: "Table")}
 
     it 'method of verification comparison of original = true for russian ' do
-      expect(card.comparison("дом")).to be true
+      expect(card.comparison("Стол")).to be true
     end
 
   end
