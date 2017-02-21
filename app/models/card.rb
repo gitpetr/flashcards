@@ -1,4 +1,8 @@
 class Card < ApplicationRecord
+
+  has_attached_file :image, styles: { medium: "360x360>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   validates :original, :translated, :user_id, presence: true 
   validates :original, :translated, uniqueness: { case_sensitive: false }
   validate  :on_review, on: :create
