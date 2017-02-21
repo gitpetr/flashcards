@@ -1,7 +1,15 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="active"><a href="/">Бренд</a></li>
   <li role="presentation"> <%= link_to 'Все карточки', cards_path %> </li>
   <li role="presentation"><%= link_to 'Добавить карточку', new_card_path %></li>
+
+  <% if current_user %>
+     <li role="presentation"> <%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+     <li role="presentation"> <%= link_to "Logout", :logout, method: :post %></li>
+    <% else %>
+     <li role="presentation"> <%= link_to "Register", new_user_path %></li>
+     <li role="presentation"> <%= link_to "Войти", :login %></li>
+    <% end %>
 </ul>
 
  

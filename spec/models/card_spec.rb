@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-  let!(:user) { create(:user)}  
+  let(:user) { create(:user)}  
   let(:card){create(:card)}  
 
   it 'method of verification comparison of original = true' do
