@@ -1,19 +1,21 @@
 class CardsController < ApplicationController
+  before_action :require_login
   before_action :set_card, except: [:index, :new, :create]
+  before_action :owner, only: [:edit, :update, :destroy]
 
   def index
-    @cards = Card.order('review , original') 
+    @cards = current_user.cards.order('review , original') 
   end
 
   def show 
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.build
   end
 
   def create 
-    @card = Card.new card_params
+    @card = current_user.cards.build card_params
     if @card.save
       redirect_to @card 
     else 
@@ -35,6 +37,11 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def owner
+      @card = current_user.cards.find_by(id: params[:id])
+      redirect_to root_path, danger: "У вас нет разрешения на изменение этой карточки" if @card.nil?
+  end
 
   def set_card 
     @card = Card.find(params[:id])

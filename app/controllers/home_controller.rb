@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
 
   def index
-    @card = Card.for_review.take
+    if current_user
+      @card = current_user.cards.for_review.take || nil
+    end
   end
   
   def update 
