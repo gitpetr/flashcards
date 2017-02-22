@@ -18,3 +18,4 @@
 config/database.yml
 .env
 .rootkey.csv
+public/system/*
