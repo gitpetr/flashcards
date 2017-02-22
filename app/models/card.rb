@@ -1,8 +1,8 @@
 class Card < ApplicationRecord
 
   has_attached_file :image,
-                    :storage => :s3,
-                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
+                    storage:  :s3,
+                    s3_credentials: Proc.new{|a| a.instance.s3_credentials },
                     styles: { medium: "360x360>" }, default_url: "/images/:style/missing.png"
 
     def s3_credentials
