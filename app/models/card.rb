@@ -1,6 +1,15 @@
 class Card < ApplicationRecord
 
-  has_attached_file :image, styles: { medium: "360x360>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :image,
+                    :storage => :s3,
+                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials },
+                    styles: { medium: "360x360>" }, default_url: "/images/:style/missing.png"
+
+    def s3_credentials
+      {s3_region: 'us-east-1', :bucket => ENV['S3_BUCKET_NAME'], :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']}
+    end
+
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   validates :original, :translated, :user_id, presence: true 
