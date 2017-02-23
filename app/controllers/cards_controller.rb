@@ -50,6 +50,6 @@ class CardsController < ApplicationController
   end
 
   def card_params 
-    params.require(:card).permit(:original, :translated, :review, :image)
+    params.require(:card).permit(:original, :translated, :review, :image, :pack_id)
   end
 end

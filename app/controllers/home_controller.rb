@@ -2,7 +2,14 @@ class HomeController < ApplicationController
 
   def index
     if current_user
-      @card = current_user.cards.for_review.take || nil
+      @packs = current_user.packs.all || nil
+      if params[:pack_id].blank?
+        @card = current_user.cards.for_review.take || nil
+      else 
+        @pack = Pack.find(params[:pack_id])
+        #k = Pack.where(pack_id: @pack_id) 
+        @card = @pack.cards.for_review.take || nil
+      end
     end
   end
   

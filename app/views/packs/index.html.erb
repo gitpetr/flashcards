@@ -1,0 +1,11 @@
+<h1> All Packs </h1>
+
+    <% @packs.each do |pack| %>
+        <li><%= link_to pack.name, pack %></li>
+    <% end %>
+
+ 
+  <%= link_to 'Новая колода', new_pack_path, class: 'btn btn-primary ' %>
+ 
+
+ 
