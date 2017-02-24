@@ -5,7 +5,6 @@ RSpec.feature 'Cards', type: :feature do
  
   let!(:user){create(:user, email: 'test@test.test', password: 'test', password_confirmation: 'test')}
   let!(:pack){create(:pack, user_id: user.id)} 
-  let(:card){create(:card)}
 
   before(:each) do 
     login('test@test.test', 'test' )
@@ -41,7 +40,3 @@ RSpec.feature 'Cards', type: :feature do
   end
 
 end
-
-
-
-
