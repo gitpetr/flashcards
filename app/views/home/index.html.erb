@@ -35,7 +35,7 @@
     <% if @packs %>
       <h3>Pacs of cards</h3>
       <ul>
-        <% @packs.all.each  do |pack| %>
+        <% @packs.each  do |pack| %>
           <li><%= link_to pack.name, root_path(pack_id: pack.id) %></li>
         <% end %>
       </ul>
