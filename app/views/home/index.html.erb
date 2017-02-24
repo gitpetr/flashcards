@@ -1,59 +1,44 @@
- <div class="jumbotron font-center">
- 
-      <p style="font-size: 22px;">
-        Первый в мире удобный менеджер флеш-карточек. Именно так.
-      </p>
-  
- </div>
+<div class="jumbotron font-center">
+  <p style="font-size: 22px;">
+    Первый в мире удобный менеджер флеш-карточек. Именно так.
+  </p>
+</div>
 <div class="row">
   <div class="col-xs-7">
-    
-  
-<div class="panel panel-default">
-   <% if @card %>
-         
-            <div id="panel_heading" class="panel-heading">
+    <div class="panel panel-default">
+      <% if @card %>
+        <div id="panel_heading" class="panel-heading">
+          <p> <%= image_tag @card.image.url(:medium) if @card.image %> </p>
+          <p>
+            Pack:  <%= @card.pack.name if @card.pack %>
+          </p>
+          <hr>
+            <%= @card.translated %>
+        </div>
 
-              <p> <%= image_tag @card.image.url(:medium) if @card.image %> </p>
-              <p>
-               Pack:  <%= @card.pack.name if @card.pack %>
-              </p>
-              <hr>
-              <%= @card.translated %>
-              
-              
-            </div>
-
-            <div class="panel-body">
-          
-              <p>
-                <%= render 'home/form' %>
-              </p>
-              </div>
+        <div class="panel-body">
+          <p>
+            <%= render 'home/form' %>
+          </p>
+        </div>
    
+      <% else %>
+        <div class="panel-body">
+          <h1>Карточек нет</h1>
+        </div>
 
-  <% else %>
-    <div class="panel-body">
-      <h1>Карточек нет</h1>
-      
+      <% end %>
     </div>
+  </div>
 
-  <% end %>
-
-</div>
-</div>
-
-<div class="col-xs-5">
-<% if @packs %>
-  <h3>Pacs of cards</h3>
-
-  <ul>
-  <% @packs.all.each  do |pack| %>
-    <li><%= link_to pack.name, root_path(pack_id: pack.id) %></li>
-  <% end %>
-    
-  </ul>
-  <% end %>
-
-</div>
+  <div class="col-xs-5">
+    <% if @packs %>
+      <h3>Pacs of cards</h3>
+      <ul>
+        <% @packs.all.each  do |pack| %>
+          <li><%= link_to pack.name, root_path(pack_id: pack.id) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>
