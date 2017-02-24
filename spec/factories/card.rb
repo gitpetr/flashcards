@@ -4,5 +4,6 @@ FactoryGirl.define do
     original "haus"
     translated "home"
     user
+    pack
   end
 end
