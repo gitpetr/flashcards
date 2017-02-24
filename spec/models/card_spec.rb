@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
 
   let!(:user){ create(:user)}
-  let!(:pack){ create(:pack, user_id: user.id) }
-  let(:card){ create(:card, user_id: user.id, pack_id: pack.id) } 
+  let!(:pack){ create(:pack, user: user) }
+  let(:card){ create(:card, user: user, pack: pack) } 
 
   it 'method of verification comparison of original = true' do
      expect(card.comparison("haus")).to be true

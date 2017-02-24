@@ -5,8 +5,8 @@ RSpec.feature 'Cards', type: :feature do
  
   before(:each) do 
     user = create(:user, email: 'test@test.test', password: 'test', password_confirmation: 'test') 
-    pack =  create(:pack, user_id: user.id) 
-    create(:card, user_id: user.id, pack_id: pack.id).update_attributes(review: -3.days.from_now)
+    pack =  create(:pack, user: user) 
+    create(:card, user: user, pack: pack).update_attributes(review: -3.days.from_now)
     visit root_path
     login('test@test.test', 'test' )
    end
