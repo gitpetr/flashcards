@@ -9,9 +9,15 @@
 <div class="panel panel-default">
    <% if @card %>
          
-            <div id="panel_heading" class="panel-heading"><%= @card.translated %></div>
+            <div id="panel_heading" class="panel-heading">
+
+              <p> <%= image_tag @card.image.url(:medium) if @card.image %> </p>
+              <%= @card.translated %>
+              
+            </div>
 
             <div class="panel-body">
+          
               <p>
                 <%= render 'home/form' %>
               </p>

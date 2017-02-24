@@ -5,7 +5,7 @@ RSpec.feature "Cards", type: :feature do
  
   before(:each) do 
     @user = create(:user) 
-    create(:card, user_id: @user.id).update_attributes(review: Time.now)
+    create(:card, user_id: @user.id).update_attributes(review: -3.days.from_now)
     visit root_path
     login("test@test.com", "test" )
    end
@@ -26,4 +26,6 @@ RSpec.feature "Cards", type: :feature do
     end
   end
 
+
+ 
 end

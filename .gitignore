@@ -16,3 +16,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 config/database.yml
+.env
+.rootkey.csv
+public/system/*
+ 

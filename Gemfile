@@ -39,7 +39,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
- 
 end
 
 group :test do 
@@ -64,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form', '~> 3.4'
 gem 'nokogiri', '~> 1.7', '>= 1.7.0.1'
 gem 'sorcery', '~> 0.10.2'
+gem 'paperclip', '~> 5.1'
+ 

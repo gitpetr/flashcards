@@ -17,9 +17,11 @@ class CardsController < ApplicationController
   def create 
     @card = current_user.cards.build card_params
     if @card.save
-      redirect_to @card 
+      flash.now[:success] = 'карточка создана'
+      redirect_to @card, success:  'карточка создана'
     else 
-      render :new
+      flash.now[:danger] = 'ошибка создания карточки'
+      render :new, danger: 'ошибка создания карточки'
     end
   end
 
@@ -48,6 +50,6 @@ class CardsController < ApplicationController
   end
 
   def card_params 
-    params.require(:card).permit(:original, :translated, :review)
+    params.require(:card).permit(:original, :translated, :review, :image)
   end
 end
