@@ -1,9 +1,10 @@
 FactoryGirl.define do
 
   factory :card do
-    original "haus"
-    translated "home"
     user
     pack
+    original "haus"
+    translated "home"
   end
 end
+

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do
 
-  let(:user){ create(:user, email: "test@test.test", password: "test", password_confirmation: "test") }
-  let(:pack){ create(:pack, user_id: user.id) }
+  let!(:user){ create(:user)}#, email: "test@test.test", password: "test", password_confirmation: "test") }
+  let!(:pack){ create(:pack, user_id: user.id) }
   let(:card){ create(:card, user_id: user.id, pack_id: pack.id) } 
 
   it 'method of verification comparison of original = true' do

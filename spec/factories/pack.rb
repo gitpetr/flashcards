@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  
   factory :pack do
-      name "techical"
       user
+      name "techical"
     end
+
 end

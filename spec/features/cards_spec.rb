@@ -26,7 +26,4 @@ RSpec.feature "Cards", type: :feature do
       expect(page).to have_content "извините, неправильно"
     end
   end
-
-
- 
 end

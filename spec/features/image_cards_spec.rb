@@ -1,13 +1,12 @@
 require 'rails_helper'
 require 'support/login_helper'
 
+
 RSpec.feature "Cards", type: :feature do
- 
+
+  let!(:user){create(:user)}
+
   before(:each) do 
-    user = create(:user)
-    pack =  create(:pack, user_id: user.id) 
-    pack1 = create(:pack, name: 'technic', user_id: user.id) 
-    visit root_path
     login("test@test.com", "test" )
    end
  
