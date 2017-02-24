@@ -12,17 +12,31 @@ RSpec.feature "Cards", type: :feature do
     login("test@test.test", "test" )
    end
 
-  feature "have selector" do 
-    it "have_selector" do
+  feature "have selector pack" do 
+    it "have_selector pack, option  techical " do
       visit new_card_path
       fill_in :card_original, :with => "a"
       fill_in :card_translated, :with => "az"
+      select('technic', from: 'card_pack_id')
       attach_file 'card_image', "#{Rails.root}/spec/images/ten.jpg"
-      expect(page).to have_selector('#card_pack_id')
       click_button "Create Card"
       Card.last.update_attributes(review: -3.days.from_now)
       visit root_path
-      expect(page).to  have_content "techical"
+      expect(page).to  have_content "Pack: techical"
+    end
+  end
+
+   feature "have selector pack1" do 
+    it "have_selector pack, option  technic " do
+      visit new_card_path
+      fill_in :card_original, :with => "atr"
+      fill_in :card_translated, :with => "azr"
+      select('technic', from: 'card_pack_id')
+      attach_file 'card_image', "#{Rails.root}/spec/images/ten.jpg"
+      click_button "Create Card"
+      Card.last.update_attributes(review: -3.days.from_now)
+      visit root_path
+      expect(page).to  have_content "Pack: techical"
     end
   end
 

@@ -16,7 +16,7 @@
 
               <p> <%= image_tag @card.image.url(:medium) if @card.image %> </p>
               <p>
-                <%= @card.pack.name if @card.pack %>
+               Pack:  <%= @card.pack.name if @card.pack %>
               </p>
               <hr>
               <%= @card.translated %>
@@ -45,9 +45,11 @@
 
 <div class="col-xs-5">
 <% if @packs %>
+  <h3>Pacs of cards</h3>
+
   <ul>
   <% @packs.all.each  do |pack| %>
-    <%= link_to pack.name, root_path(pack_id: pack.id) %>
+    <li><%= link_to pack.name, root_path(pack_id: pack.id) %></li>
   <% end %>
     
   </ul>
