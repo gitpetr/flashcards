@@ -12,7 +12,7 @@ RSpec.feature 'Cards', type: :feature do
    end
 
   feature 'have selector pack' do 
-    it 'have_selector pack, option  techical ' do
+    it 'have_selector pack, option  techical' do
       visit new_card_path
       fill_in :card_original, with: 'a'
       fill_in :card_translated, with: 'az'
@@ -26,7 +26,7 @@ RSpec.feature 'Cards', type: :feature do
   end
 
   feature 'have selector pack1' do 
-    it 'have_selector pack1, option  amb ' do
+    it 'have_selector pack1, option  amb' do
       pack1 = create(:pack, name: 'amb', user_id: user.id) 
       visit new_card_path
       fill_in :card_original, with: 'atr'
