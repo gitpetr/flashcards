@@ -22,7 +22,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, info: 'User was successfully created.' 
+      login(params[:email], params[:password])
+      redirect_to root_path, info: 'User was successfully created.' 
     else
       render :new 
     end
