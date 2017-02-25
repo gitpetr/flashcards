@@ -17,11 +17,10 @@ class PacksController < ApplicationController
   def create 
     @pack = current_user.packs.build pack_params
     if @pack.save
-      flash.now[:success] = 'колода создана'
       redirect_to @pack, success:  'колода создана'
     else 
       flash.now[:danger] = 'ошибка создания колоды'
-      render :new, danger: 'ошибка создания колоды'
+      render :new 
     end
   end
 

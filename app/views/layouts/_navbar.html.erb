@@ -4,12 +4,11 @@
   <li role="presentation"><%= link_to 'Добавить карточку', new_card_path %></li>
 
   <% if current_user %>
-     <li role="presentation"> <%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-     <li role="presentation"> <%= link_to "Logout", :logout, method: :post %></li>
-    <% else %>
+    <li role="presentation"> <%= link_to 'New pack', new_pack_path %></li>
+    <li role="presentation"> <%= link_to current_user.email, edit_user_path(current_user.id) %></li>
+    <li role="presentation"> <%= link_to "Logout", :logout, method: :post %></li>
+  <% else %>
      <li role="presentation"> <%= link_to "Register", new_user_path %></li>
      <li role="presentation"> <%= link_to "Войти", :login %></li>
-    <% end %>
+  <% end %>
 </ul>
-
- 

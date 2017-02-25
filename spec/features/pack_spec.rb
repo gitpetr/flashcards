@@ -3,12 +3,12 @@ require 'support/login_helper'
 
 RSpec.feature 'Cards', type: :feature do
  
-  let!(:user){create(:user, email: 'test@test.test', password: 'test', password_confirmation: 'test')}
-  let!(:pack){create(:pack, user: user)} 
+  let!(:user) { create(:user, email: 'test@test.test', password: 'test', password_confirmation: 'test') }
+  let!(:pack) { create(:pack, user: user) } 
 
   before(:each) do 
-    login('test@test.test', 'test' )
-   end
+    login( 'test@test.test', 'test' )
+  end
 
   feature 'have selector pack' do 
     it 'have_selector pack, option  techical' do
@@ -38,5 +38,4 @@ RSpec.feature 'Cards', type: :feature do
       expect(page).to  have_content 'Pack: amb'
     end
   end
-
 end
