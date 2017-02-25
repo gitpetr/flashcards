@@ -9,6 +9,7 @@ class Card < ApplicationRecord
   validate  :no_equal, on: [:create, :update]
 
   belongs_to :user
+  belongs_to :pack
   
   scope :for_review, -> { where( 'review <= ?', Time.now ) }
   

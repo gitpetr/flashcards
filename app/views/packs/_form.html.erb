@@ -1,0 +1,15 @@
+<% if @pack.errors.any? %>
+  <div class="alert alert-danger">
+    <h5><%=  pluralize(@pack.errors.count, "error") %></h5>
+    <ul>
+      <% @pack.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for @pack do |f| %>
+    <%= f.input :name %>
+   <%= f.button :submit,  class: 'btn btn-primary' %>
+<% end %>
