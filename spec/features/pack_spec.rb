@@ -7,7 +7,7 @@ RSpec.feature 'Cards', type: :feature do
   let!(:pack) { create(:pack, user: user) } 
 
   before(:each) do 
-    login( 'test@test.test', 'test' )
+    login('test@test.test', 'test')
   end
 
   feature 'have selector pack' do 
