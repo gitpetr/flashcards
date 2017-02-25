@@ -1,9 +1,8 @@
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="active"><a href="/">Бренд</a></li>
-  <li role="presentation"> <%= link_to 'Все карточки', cards_path %> </li>
-  <li role="presentation"><%= link_to 'Добавить карточку', new_card_path %></li>
-
   <% if current_user %>
+    <li role="presentation"> <%= link_to 'Все карточки', cards_path %> </li>
+    <li role="presentation"><%= link_to 'Добавить карточку', new_card_path %></li>
     <li role="presentation"> <%= link_to 'New pack', new_pack_path %></li>
     <li role="presentation"> <%= link_to current_user.email, edit_user_path(current_user.id) %></li>
     <li role="presentation"> <%= link_to "Logout", :logout, method: :post %></li>
