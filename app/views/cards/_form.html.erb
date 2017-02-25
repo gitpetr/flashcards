@@ -1,7 +1,7 @@
 <div class="jumbotron">
   
   <%= simple_form_for @card do |f| %>
-    <%= f.collection_select :pack_id, Pack.all, :id, :name, { prompt: "Choose a Pack" } %>
+    <%= f.collection_select :pack_id, current_user.packs, :id, :name, { prompt: "Choose a Pack" } %>
     <%= f.input :original %>
     <%= f.input :translated %>
     <%= f.input :review %>
