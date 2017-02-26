@@ -19,8 +19,8 @@ class HomeController < ApplicationController
       redirect_back(fallback_location: root_path,  success: 'угадал')
     else
       @card.counter_review > 2? \
-        @card.update_attributes(counter_review: @card.counter_review +=1, term_review: 0 ) \
-        : @card.update_attributes(counter_review: @card.counter_review +=1)
+        @card.update_attributes(counter_review: @card.counter_review += 1, term_review: 0) \
+        : @card.update_attributes(counter_review: @card.counter_review += 1)
       redirect_back(fallback_location: root_path, danger: 'извините, неправильно')
     end
   end
