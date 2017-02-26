@@ -4,7 +4,7 @@ class Card < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   validates :original, :translated, :user_id, presence: true 
-  validates :original, :translated, uniqueness: { case_sensitive: false }
+  validates :original, :translated, uniqueness: {scope: :user, case_sensitive: false }
   validate  :on_review, on: :create
   validate  :no_equal, on: [:create, :update]
 
