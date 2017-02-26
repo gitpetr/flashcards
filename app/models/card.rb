@@ -17,8 +17,8 @@ class Card < ApplicationRecord
     self.original == txt
   end
 
-  def update_date_review
-      self.update_attributes(review: date_review(self.term_review)) 
+  def update_term_date_counter_review
+    self.update_attributes(review: date_review(self.term_review += 1), counter_review: 0) 
   end
 
   protected
@@ -26,7 +26,7 @@ class Card < ApplicationRecord
   def date_review term
     case term
       when 0 then Time.now
-      when 1 then Time.now + 43200
+      when 1 then Time.now + 12.hours
       when 2 then 3.days.from_now
       when 3 then 7.days.from_now
       when 4 then 14.days.from_now
