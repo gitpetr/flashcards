@@ -25,13 +25,13 @@ class Card < ApplicationRecord
 
   def date_review term
     case term
-      when 0 then Time.now
-      when 1 then Time.now + 12.hours
-      when 2 then 3.days.from_now
-      when 3 then 7.days.from_now
-      when 4 then 14.days.from_now
-      when 5 then 30.days.from_now
-      else 30.days.from_now
+    when 0 then Time.now
+    when 1 then Time.now + 12.hours
+    when 2 then 3.days.from_now
+    when 3 then 7.days.from_now
+    when 4 then 14.days.from_now
+    when 5 then 30.days.from_now
+    else 30.days.from_now
     end
   end
 
