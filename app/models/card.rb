@@ -12,16 +12,28 @@ class Card < ApplicationRecord
   belongs_to :pack
   
   scope :for_review, -> { where( 'review <= ?', Time.now ) }
-  
+
   def comparison(txt)
     self.original == txt
   end
 
   def update_date_review
-      self.update_attributes(review: 3.days.from_now) 
+      self.update_attributes(review: date_review(self.term_review)) 
   end
 
   protected
+
+  def date_review term
+    case term
+      when 0 then Time.now
+      when 1 then Time.now + 43200
+      when 2 then 3.days.from_now
+      when 3 then 7.days.from_now
+      when 4 then 14.days.from_now
+      when 5 then 30.days.from_now
+      else 30.days.from_now
+    end
+  end
 
   def on_review 
     self.review = 3.days.from_now
@@ -32,5 +44,4 @@ class Card < ApplicationRecord
       self.errors.add( :original, 'Оригинальный и переведённый тексты не должны быть равны друг другу')
     end
   end
-
 end
