@@ -3,7 +3,7 @@ require 'support/login_helper'
 
 RSpec.feature 'Cards', type: :feature do
  
-  before(:each) do 
+  before do 
     user = create(:user, email: 'test@test.test', password: 'test', password_confirmation: 'test') 
     pack =  create(:pack, user: user) 
     create(:card, user: user, pack: pack).update_attributes(review: -3.days.from_now)

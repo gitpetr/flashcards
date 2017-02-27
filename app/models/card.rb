@@ -4,7 +4,7 @@ class Card < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   validates :original, :translated, :user_id, presence: true 
-  validates :original, :translated, uniqueness: { case_sensitive: false }
+  validates :original, :translated, uniqueness: { scope: :user, case_sensitive: false }
   validate  :on_review, on: :create
   validate  :no_equal, on: [:create, :update]
 
@@ -12,19 +12,39 @@ class Card < ApplicationRecord
   belongs_to :pack
   
   scope :for_review, -> { where( 'review <= ?', Time.now ) }
-  
+
   def comparison(txt)
     self.original == txt
   end
 
-  def update_date_review
-      self.update_attributes(review: 3.days.from_now) 
+  def right_answer!
+    self.update_attributes(review: date_review(self.term_review += 1), counter_review: 0) 
+  end
+
+  def wrong_answer!
+    if self.counter_review > 2
+      update(counter_review: self.counter_review += 1, term_review: 0)
+    else
+      update(counter_review: self.counter_review += 1)
+    end
   end
 
   protected
 
+  def date_review term
+    case term
+    when 0 then Time.now
+    when 1 then Time.now + 12.hours
+    when 2 then 3.days.from_now
+    when 3 then 7.days.from_now
+    when 4 then 14.days.from_now
+    when 5 then 30.days.from_now
+    else 30.days.from_now
+    end
+  end
+
   def on_review 
-    self.review = 3.days.from_now
+    self.review = -3.days.from_now
   end
 
   def no_equal
@@ -32,5 +52,4 @@ class Card < ApplicationRecord
       self.errors.add( :original, 'Оригинальный и переведённый тексты не должны быть равны друг другу')
     end
   end
-
 end

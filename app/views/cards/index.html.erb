@@ -3,6 +3,7 @@
 <p>
   <%= link_to card.original, card %> | 
   <%= card.review.to_date.strftime("%d %B, %Y") %> | 
+  term_review: <%= card.term_review %> |
   <%= link_to 'Изменить', edit_card_path(card) %> |  
    <%= link_to 'Удалить', card, method: :delete, data: { confirm: 'Удалить насовсем?' } %>
 
