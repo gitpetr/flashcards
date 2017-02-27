@@ -23,9 +23,9 @@ class Card < ApplicationRecord
 
   def wrong_answer!
     if self.counter_review > 2
-      self.update_attributes(counter_review: self.counter_review += 1, term_review: 0)
+      update(counter_review: self.counter_review += 1, term_review: 0)
     else
-      self.update_attributes(counter_review: self.counter_review += 1)
+      update(counter_review: self.counter_review += 1)
     end
   end
 
