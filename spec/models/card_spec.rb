@@ -2,24 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Card, type: :model do
 
-  let!(:user){ create(:user)}
+  let!(:user){ create(:user) }
   let!(:pack){ create(:pack, user: user) }
   let(:card){ create(:card, user: user, pack: pack) } 
 
   it 'method of verification comparison of original = true' do
-     expect(card.comparison('haus')).to be true
+    expect(card.comparison('haus')).to be true
   end
 
   it 'method of verification comparison of original = false' do
-     expect(card.comparison('hause')).to be false
+    expect(card.comparison('hause')).to be false
   end
  
   it 'check the automatic creation review' do 
-    expect(card.review).to eq ( -3.days.from_now).to_date
+    expect(card.review).to eq -3.days.from_now.to_date
   end
 
   it 'original not to be eq translated' do
-    expect(Card.new(original: 'hause', translated: 'Hause' )).not_to be_valid
+    expect(Card.new(original: 'hause', translated: 'Hause')).not_to be_valid
   end
 
   it 'catching errors if original eq translated' do
@@ -30,7 +30,7 @@ RSpec.describe Card, type: :model do
 
   describe do 
 
-    let(:card){create(:card, original: 'Стол', translated: 'Table', user: user, pack: pack)}
+    let(:card){ create(:card, original: 'Стол', translated: 'Table', user: user, pack: pack) }
 
     it 'method of verification comparison of original = true for russian ' do
       expect(card.comparison('Стол')).to be true

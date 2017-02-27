@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
  
   describe do 
-    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test')}
-    let(:card){create(:card, original: "Стол", translated: "Table", user: user)}
+    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test') }
+    let(:card){ create(:card, original: "Стол", translated: "Table", user: user) }
 
     it 'method update_term_counter_date_review' do
       card.update_term_counter_date_review
@@ -40,8 +40,8 @@ RSpec.describe Card, type: :model do
   end
 
   describe do
-    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test')}
-    let(:card){ create(:card, original: "Name", translated: "Имя", user: user, term_review: 6)}
+    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test') }
+    let(:card){ create(:card, original: "Name", translated: "Имя", user: user, term_review: 6) }
 
     it 'method update_term_counter_when_comparison_false' do
       card.update_term_counter_when_comparison_false
@@ -59,7 +59,7 @@ RSpec.describe Card, type: :model do
       card.update_term_counter_when_comparison_false
       expect(card.term_review).to eq 0
       expect(card.counter_review).to eq 4
-      
+
       card.update_term_counter_when_comparison_false
       expect(card.term_review).to eq 0
       expect(card.counter_review).to eq 5
@@ -67,8 +67,8 @@ RSpec.describe Card, type: :model do
   end
 
   describe do 
-    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test')}
-    let(:card){ create(:card, original: "barrel", translated: "бочка", user: user, term_review: 0, counter_review: 7)}
+    let!(:user){ create(:user, email: 'test', password: 'test', password_confirmation: 'test') }
+    let(:card){ create(:card, original: "barrel", translated: "бочка", user: user, term_review: 0, counter_review: 7) }
 
     it 'method update_term_counter_date_review after mistake' do
       card.update_term_counter_date_review
