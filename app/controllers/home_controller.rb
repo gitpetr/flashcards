@@ -15,12 +15,10 @@ class HomeController < ApplicationController
   def update 
     @card = Card.find(params[:id])
     if @card.comparison(params[:text])
-      @card.update_term_date_counter_review
+      @card.update_term_counter_date_review
       redirect_back(fallback_location: root_path,  success: 'угадал')
     else
-      @card.counter_review > 2? \
-        @card.update_attributes(counter_review: @card.counter_review += 1, term_review: 0) \
-        : @card.update_attributes(counter_review: @card.counter_review += 1)
+      @card.update_term_counter_when_comparison_false
       redirect_back(fallback_location: root_path, danger: 'извините, неправильно')
     end
   end

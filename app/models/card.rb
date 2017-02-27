@@ -4,7 +4,7 @@ class Card < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   validates :original, :translated, :user_id, presence: true 
-  validates :original, :translated, uniqueness: {scope: :user, case_sensitive: false }
+  validates :original, :translated, uniqueness: { scope: :user, case_sensitive: false }
   validate  :on_review, on: :create
   validate  :no_equal, on: [:create, :update]
 
@@ -17,8 +17,14 @@ class Card < ApplicationRecord
     self.original == txt
   end
 
-  def update_term_date_counter_review
+  def update_term_counter_date_review
     self.update_attributes(review: date_review(self.term_review += 1), counter_review: 0) 
+  end
+
+  def update_term_counter_when_comparison_false
+    self.counter_review > 2? \
+      self.update_attributes(counter_review: self.counter_review += 1, term_review: 0) \
+      : self.update_attributes(counter_review: self.counter_review += 1)
   end
 
   protected
@@ -36,7 +42,7 @@ class Card < ApplicationRecord
   end
 
   def on_review 
-    self.review = 3.days.from_now
+    self.review = -3.days.from_now
   end
 
   def no_equal

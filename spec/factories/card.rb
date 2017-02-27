@@ -5,6 +5,8 @@ FactoryGirl.define do
     pack
     original "haus"
     translated "home"
+    term_review 0
+    counter_review 0
   end
 end
 
