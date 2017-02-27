@@ -3,7 +3,7 @@ require 'support/login_helper'
 
 RSpec.feature 'Cards', type: :feature do
 
-  let!(:user) { create(:user, email: 'test@test.com', password: 'test', password_confirmation: 'test') }
+  let!(:user) { create(:user, email: 'test@test.com') }
 
   before do 
     login('test@test.com', 'test' )
