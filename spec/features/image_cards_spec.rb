@@ -3,9 +3,9 @@ require 'support/login_helper'
 
 RSpec.feature 'Cards', type: :feature do
 
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, email: 'test@test.com', password: 'test', password_confirmation: 'test') }
 
-  before(:each) do 
+  before do 
     login('test@test.com', 'test' )
   end
  
