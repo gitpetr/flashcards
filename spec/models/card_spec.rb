@@ -28,7 +28,7 @@ RSpec.describe Card, type: :model do
     expect(card.errors[:original]).to include('Оригинальный и переведённый тексты не должны быть равны друг другу')
   end
 
-  describe do 
+  describe 'check on russian' do 
 
     let(:card){ create(:card, original: 'Стол', translated: 'Table', user: user, pack: pack) }
 

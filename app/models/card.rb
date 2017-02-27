@@ -17,11 +17,11 @@ class Card < ApplicationRecord
     self.original == txt
   end
 
-  def update_term_counter_date_review
+  def right_answer!
     self.update_attributes(review: date_review(self.term_review += 1), counter_review: 0) 
   end
 
-  def update_term_counter_when_comparison_false
+  def wrong_answer!
     if self.counter_review > 2
       self.update_attributes(counter_review: self.counter_review += 1, term_review: 0)
     else
