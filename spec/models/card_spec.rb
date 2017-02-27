@@ -35,7 +35,6 @@ RSpec.describe Card, type: :model do
     it 'method of verification comparison of original = true for russian ' do
       expect(card.comparison('Стол')).to be true
     end
-
   end
 end
  

@@ -22,9 +22,11 @@ class Card < ApplicationRecord
   end
 
   def update_term_counter_when_comparison_false
-    self.counter_review > 2? \
-      self.update_attributes(counter_review: self.counter_review += 1, term_review: 0) \
-      : self.update_attributes(counter_review: self.counter_review += 1)
+    if self.counter_review > 2
+      self.update_attributes(counter_review: self.counter_review += 1, term_review: 0)
+    else
+      self.update_attributes(counter_review: self.counter_review += 1)
+    end
   end
 
   protected
