@@ -11,10 +11,11 @@ class Card < ApplicationRecord
   belongs_to :user
   belongs_to :pack
   
-  scope :for_review, -> { where( 'review <= ?', Time.now ) }
+  scope :for_review, -> { where( 'review <= ?', Time.now.localtime ) }
 
   def comparison(txt)
-    self.original == txt
+    q = Text::Levenshtein.distance(self.original, txt)
+    original == txt
   end
 
   def right_answer!

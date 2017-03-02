@@ -64,4 +64,4 @@ gem 'simple_form', '~> 3.4'
 gem 'nokogiri', '~> 1.7', '>= 1.7.0.1'
 gem 'sorcery', '~> 0.10.2'
 gem 'paperclip', '~> 5.1'
- 
+gem 'text', '~> 1.3', '>= 1.3.1'
