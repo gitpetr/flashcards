@@ -14,7 +14,6 @@ class Card < ApplicationRecord
   scope :for_review, -> { where( 'review <= ?', Time.now.localtime ) }
 
   def comparison(txt)
-    q = Text::Levenshtein.distance(self.original, txt)
     original == txt
   end
 

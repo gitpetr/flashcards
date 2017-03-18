@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   
   def update 
     @card = Card.find(params[:id])
-    if @card.comparison(params[:text])
+    if @card.comparison(params[:text]) # q = Text::Levenshtein.distance(self.original, txt)
       @card.right_answer!
       redirect_back(fallback_location: root_path,  success: 'угадал')
     else
